@@ -1,0 +1,48 @@
+/* Le panneau se déroule depuis le haut ; il est caché (hors écran) quand il est fermé */
+.pd-panneau {
+  position: fixed; inset: 0; z-index: 3000; overflow-y: auto; overscroll-behavior: contain; color: #fff;
+  transform: translateY(-100%); visibility: hidden;
+  transition: transform .65s cubic-bezier(.22, 1, .36, 1), visibility 0s linear .65s;
+}
+.pd-panneau.ouvert {
+  transform: translateY(0); visibility: visible;
+  transition: transform .65s cubic-bezier(.22, 1, .36, 1), visibility 0s;
+}
+
+.pd-entete {
+  position: sticky; top: 0; z-index: 2; display: flex; align-items: center; justify-content: center;
+  min-height: 92px; padding: 16px 110px;
+}
+.pd-entete h1 { margin: 0; font-size: clamp(1.35rem, 3vw, 2rem); font-weight: 600; text-align: center; }
+.pd-retour {
+  position: absolute; left: 20px; top: 50%; transform: translateY(-50%);
+  background: #e8761f; color: #fff; border: 0; border-radius: 8px; padding: 8px 20px; font-weight: 700; cursor: pointer;
+}
+.pd-retour:hover { background: #cf6513; }
+.pd-retour:focus-visible { outline: 3px solid #fff; outline-offset: 2px; }
+.pd-contenu { max-width: 1100px; margin: 0 auto; padding: 56px 24px 72px; }
+
+/* Thèmes */
+.pd-fullstack { background: #04153d; }
+.pd-fullstack .pd-entete { background: linear-gradient(180deg, #071a4d 0%, #1240a8 100%); }
+.pd-cyber { background: #16295b; }
+.pd-cyber .pd-entete { min-height: 120px; background: linear-gradient(100deg, #0a1a4a 0%, #2d5bc4 100%); }
+.pd-cyber .pd-contenu { max-width: none; padding: 64px max(24px, 5vw) 80px; background: linear-gradient(180deg, #16295b 0%, #244a9c 100%); }
+
+/* Apparition progressive du contenu une fois le panneau ouvert */
+.pd-anim { opacity: 0; transform: translateY(24px); }
+.pd-panneau.ouvert .pd-anim { animation: pd-monte .7s cubic-bezier(.22, 1, .36, 1) var(--d, .3s) both; }
+@keyframes pd-monte { to { opacity: 1; transform: none; } }
+
+@media (max-width: 768px) {
+  .pd-entete { padding: 16px 20px 16px 104px; justify-content: flex-start; }
+  .pd-entete h1 { text-align: left; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .pd-panneau, .pd-panneau.ouvert { transition: none; }
+  .pd-panneau.ouvert .pd-anim { animation: none; opacity: 1; transform: none; }
+}
+
+/* Thème Métiers de l'informatique */
+.pd-metiers { background: #1f3463; }
+.pd-metiers .pd-entete { min-height: 132px; background: linear-gradient(180deg, #071a4d 0%, #1240a8 100%); }

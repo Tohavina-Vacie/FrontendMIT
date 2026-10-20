@@ -1,0 +1,63 @@
+:root {
+  --nuit: #0a1a3f;
+  --nuit-2: #12275a;
+  --carte: #0f2250;
+  --orange: #ff7a1a;
+  --orange-fonce: #e86a0c;
+  --bleu: #2f6fed;
+}
+.auth-page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  background: linear-gradient(160deg, var(--nuit), var(--nuit-2));
+  color: #fff;
+}
+.auth-card {
+  width: 100%;
+  max-width: 440px;
+  background: var(--carte);
+  border-radius: 16px;
+  padding: 36px 32px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.35);
+}
+.auth-card.large { max-width: 760px; }
+.auth-card h1 { font-size: 1.6rem; margin-bottom: 24px; text-align: center; }
+.auth-card .form-control,
+.auth-card .form-select {
+  background: #0a1a3f;
+  border: 1px solid #27407f;
+  color: #fff;
+}
+.auth-card .form-control:focus,
+.auth-card .form-select:focus {
+  border-color: var(--orange);
+  box-shadow: 0 0 0 3px rgba(255, 122, 26, 0.25);
+}
+.auth-card .form-control::placeholder { color: #8fa3d1; }
+.auth-card label { color: #c9d6f5; font-size: 0.9rem; }
+.btn-orange { background: var(--orange); border: 0; color: #fff; font-weight: 600; }
+.btn-orange:hover, .btn-orange:focus { background: var(--orange-fonce); color: #fff; }
+.btn-bleu { background: var(--bleu); border: 0; color: #fff; font-weight: 600; }
+.btn-bleu:hover { background: #2559c0; color: #fff; }
+.photo-profil {
+  width: 96px; height: 96px; border-radius: 50%; object-fit: cover;
+  background: #0a1a3f; border: 2px solid var(--orange);
+}
+.admin-page { min-height: 100vh; background: var(--nuit); color: #fff; padding: 32px 16px; }
+.admin-page .table { --bs-table-bg: var(--carte); --bs-table-color: #fff; --bs-table-border-color: #27407f; }
+.overlay {
+  position: fixed; inset: 0; background: rgba(5, 12, 30, 0.7);
+  display: flex; align-items: center; justify-content: center; padding: 16px; z-index: 1050;
+}
+
+/* Champ mot de passe avec bouton œil */
+.champ-mdp { position: relative; }
+.champ-mdp .form-control { padding-right: 46px; }
+.btn-oeil {
+  position: absolute; top: 50%; right: 8px; transform: translateY(-50%);
+  background: none; border: 0; padding: 6px; line-height: 0; color: #8fa3d1; cursor: pointer;
+}
+.btn-oeil:hover, .btn-oeil:focus-visible { color: var(--orange); outline: none; }

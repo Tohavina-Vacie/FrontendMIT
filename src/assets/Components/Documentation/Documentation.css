@@ -1,0 +1,589 @@
+@import url("https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Hanken+Grotesk:wght@400;500;600&family=JetBrains+Mono:wght@500;700&display=swap");
+
+.doc {
+  --d-orange: #e8761f;
+  --d-orange-light: #ffb066;
+  --d-card: #0d1020;
+  --d-card-border: #1b2036;
+  --d-muted: #8fa0c8;
+
+  font-family: "Hanken Grotesk", system-ui, sans-serif;
+  color: #fff;
+}
+
+.doc h1,
+.doc h2,
+.doc h3 {
+  font-family: "Outfit", system-ui, sans-serif;
+}
+
+.doc-mono {
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+}
+
+/* ---------- Sections ---------- */
+.doc-section {
+  padding: 72px 0;
+  background: linear-gradient(180deg, #061a47 0%, #11399b 100%);
+}
+
+.doc-dark {
+  background: #0a0c15;
+}
+
+.doc-heading {
+  margin-bottom: 32px;
+}
+
+.doc-heading h2,
+.doc-cta h2 {
+  margin-bottom: 10px;
+  font-size: clamp(1.6rem, 3vw, 2rem);
+  font-weight: 700;
+}
+
+.doc-heading p {
+  margin: 0;
+  font-size: 0.9rem;
+  color: var(--d-muted);
+}
+
+.doc-text {
+  font-size: 0.8rem;
+  line-height: 1.6;
+  color: var(--d-muted);
+}
+
+.doc-lead {
+  max-width: 660px;
+  margin: 0 0 28px;
+  line-height: 1.7;
+  color: var(--d-muted);
+}
+
+.doc-label {
+  margin-bottom: 18px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--d-orange);
+}
+
+/* ---------- Hero : un reflet de lumière traverse le titre ---------- */
+.doc-hero {
+  padding: 72px 0 80px;
+}
+
+.doc-hero h1 {
+  display: inline-block;
+  margin-bottom: 16px;
+  font-size: clamp(2.2rem, 5vw, 3.2rem);
+  font-weight: 700;
+  background: linear-gradient(100deg, #fff 0%, #fff 42%, var(--d-orange-light) 50%, #fff 58%, #fff 100%) 100% 0 / 250% 100% no-repeat;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: doc-shine 2.2s ease 0.4s both;
+}
+
+@keyframes doc-shine {
+  from {
+    background-position: 100% 0;
+  }
+  to {
+    background-position: 0% 0;
+  }
+}
+
+.doc-hero .doc-lead {
+  margin-bottom: 0;
+  animation: doc-fade 0.9s 0.2s ease both;
+}
+
+@keyframes doc-fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* =====================================================
+   1. Brochures : cible en pointillés + flèche de téléchargement
+   ===================================================== */
+.doc-card {
+  position: relative;
+  display: block;
+  padding: 22px 24px 26px;
+  color: inherit;
+  text-decoration: none;
+  background: var(--d-card);
+  border: 1px solid var(--d-card-border);
+  border-radius: 14px;
+  outline: 2px dashed transparent;
+  outline-offset: 0;
+  transition: outline-color 0.3s ease, outline-offset 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.doc-card h3 {
+  margin-bottom: 6px;
+  font-size: 1.1rem;
+  font-weight: 700;
+}
+
+.doc-icon {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  color: var(--d-orange);
+  background: #1a1d2e;
+  border-radius: 10px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.doc-arrow {
+  transform-box: fill-box;
+}
+
+.doc-size {
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: var(--d-orange);
+}
+
+@keyframes doc-drop {
+  0% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  45% {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  46% {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.doc-card:hover,
+.doc-card:focus-visible {
+  outline-color: rgba(232, 118, 31, 0.7);
+  outline-offset: 6px;
+}
+
+.doc-card:hover .doc-icon,
+.doc-card:focus-visible .doc-icon {
+  color: #fff;
+  background: var(--d-orange);
+}
+
+.doc-card:hover .doc-arrow,
+.doc-card:focus-visible .doc-arrow {
+  animation: doc-drop 1s ease-in-out infinite;
+}
+
+/* =====================================================
+   2. FAQ : accordéon fluide, repère orange et chevron
+   ===================================================== */
+.doc-faq {
+  position: relative;
+  overflow: hidden;
+  background: var(--d-card);
+  border: 1px solid var(--d-card-border);
+  border-radius: 12px;
+  transform-origin: top center;
+  transition: border-color 0.3s ease, background-color 0.3s ease;
+}
+
+.doc-faq::before {
+  position: absolute;
+  top: 18%;
+  bottom: 18%;
+  left: 0;
+  width: 3px;
+  content: "";
+  background: var(--d-orange);
+  border-radius: 0 3px 3px 0;
+  transform: scaleY(0);
+  transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.doc-faq h3 {
+  margin: 0;
+}
+
+.doc-faq-q {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  width: 100%;
+  padding: 18px 22px 8px;
+  font-family: "Outfit", system-ui, sans-serif;
+  font-size: 0.98rem;
+  font-weight: 700;
+  color: #fff;
+  text-align: left;
+  background: none;
+  border: 0;
+  cursor: pointer;
+}
+
+.doc-faq-q span {
+  transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.doc-faq-q:focus-visible {
+  outline: 2px solid var(--d-orange);
+  outline-offset: -4px;
+  border-radius: 12px;
+}
+
+.doc-chevron {
+  flex-shrink: 0;
+  color: var(--d-orange);
+  transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* Réponse : ouverture en douceur */
+.doc-faq-a {
+  display: grid;
+  grid-template-rows: 0fr;
+  visibility: hidden;
+  transition: grid-template-rows 0.4s ease, visibility 0s 0.4s;
+}
+
+.doc-faq-a > div {
+  overflow: hidden;
+}
+
+.doc-faq-a p {
+  margin: 0;
+  padding: 0 22px 18px;
+  font-size: 0.8rem;
+  line-height: 1.6;
+  color: var(--d-muted);
+}
+
+.doc-faq.is-open .doc-faq-a {
+  grid-template-rows: 1fr;
+  visibility: visible;
+  transition-delay: 0s;
+}
+
+.doc-faq.is-open .doc-chevron {
+  transform: rotate(180deg);
+}
+
+.doc-faq:hover,
+.doc-faq.is-open {
+  background-color: #10142a;
+}
+
+.doc-faq:hover {
+  border-color: rgba(232, 118, 31, 0.45);
+}
+
+.doc-faq:hover::before,
+.doc-faq.is-open::before {
+  transform: scaleY(1);
+}
+
+.doc-faq:hover .doc-faq-q span {
+  transform: translateX(6px);
+}
+
+.doc-faq:hover .doc-chevron {
+  transform: translateY(3px);
+}
+
+.doc-faq.is-open:hover .doc-chevron {
+  transform: rotate(180deg) translateY(3px);
+}
+
+/* =====================================================
+   3. Actualités : image qui se déplace + bouton « Lire la suite »
+   ===================================================== */
+.doc-news {
+  position: relative;
+  overflow: hidden;
+  background: var(--d-card);
+  border: 1px solid var(--d-card-border);
+  border-radius: 16px;
+  transition: box-shadow 0.4s ease, border-color 0.4s ease;
+}
+
+.doc-news-img {
+  position: relative;
+  overflow: hidden;
+}
+
+.doc-news-img img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 21 / 8;
+  object-fit: cover;
+  transition: transform 1s cubic-bezier(0.22, 1, 0.36, 1), filter 0.5s ease;
+}
+
+.doc-news-more {
+  position: absolute;
+  bottom: 18px;
+  left: 20px;
+  padding: 8px 16px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #fff;
+  background: var(--d-orange);
+  border-radius: 999px;
+  opacity: 0;
+  translate: 0 24px;
+  transition: opacity 0.35s ease, translate 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.doc-news-body {
+  padding: 22px 24px 26px;
+}
+
+.doc-news-body h3 {
+  margin-bottom: 8px;
+  font-size: 1.25rem;
+  font-weight: 700;
+}
+
+.doc-news-body h3 a {
+  color: #fff;
+  text-decoration: none;
+}
+
+.doc-tag {
+  margin-bottom: 8px;
+  font-size: 0.68rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--d-orange);
+}
+
+.doc-news:hover {
+  border-color: rgba(232, 118, 31, 0.4);
+  box-shadow: 0 18px 44px rgba(0, 0, 0, 0.45);
+}
+
+.doc-news:hover .doc-news-img img {
+  filter: brightness(1.12);
+  transform: scale(1.1) translate(-2%, -3%);
+}
+
+.doc-news:hover .doc-news-more {
+  opacity: 1;
+  translate: 0 0;
+}
+
+/* =====================================================
+   4. Ressources : éclat dans le coin + flèche qui file
+   ===================================================== */
+.doc-res {
+  position: relative;
+  padding: 26px 24px;
+  background:
+    radial-gradient(circle at 100% 100%, rgba(232, 118, 31, 0.3), transparent 62%) no-repeat 100% 100% / 0% 0%,
+    #0d1120;
+  border: 1px solid var(--d-card-border);
+  border-radius: 14px;
+  transition: background-size 0.7s cubic-bezier(0.22, 1, 0.36, 1), border-color 0.3s ease;
+}
+
+.doc-res h3 {
+  margin-bottom: 10px;
+  font-size: 1.3rem;
+  font-weight: 700;
+  background: linear-gradient(var(--d-orange), var(--d-orange)) no-repeat left bottom / 0 3px;
+  transition: background-size 0.4s ease;
+  display: inline-block;
+}
+
+.doc-res-link {
+  display: inline-flex;
+  gap: 6px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--d-orange);
+  text-decoration: none;
+}
+
+.doc-res-link span {
+  display: inline-block;
+}
+
+@keyframes doc-fly {
+  0% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  45% {
+    opacity: 0;
+    transform: translateX(14px);
+  }
+  46% {
+    opacity: 0;
+    transform: translateX(-14px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.doc-res:hover {
+  background-size: 160% 160%;
+  border-color: rgba(232, 118, 31, 0.5);
+}
+
+.doc-res:hover h3 {
+  background-size: 100% 3px;
+}
+
+.doc-res:hover .doc-res-link span {
+  animation: doc-fly 1s ease-in-out infinite;
+}
+
+/* ---------- Appel à l'action : onde qui se propage ---------- */
+.doc-cta {
+  padding: 84px 0;
+}
+
+.btn-doc {
+  position: relative;
+  padding: 12px 28px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #fff;
+  background: var(--d-orange);
+  border: 0;
+  border-radius: 6px;
+}
+
+.btn-doc:hover,
+.btn-doc:focus-visible,
+.btn-doc:active {
+  color: #fff;
+  background: #f08a3c;
+  animation: doc-ring 1.2s ease-out infinite;
+}
+
+@keyframes doc-ring {
+  0% {
+    box-shadow: 0 0 0 0 rgba(232, 118, 31, 0.7);
+  }
+  100% {
+    box-shadow: 0 0 0 16px rgba(232, 118, 31, 0);
+  }
+}
+
+/* =====================================================
+   Animations d'entrée
+   ===================================================== */
+@keyframes doc-skew-in {
+  from {
+    opacity: 0;
+    transform: translateX(-60px) skewX(-10deg);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes doc-grow-y {
+  from {
+    opacity: 0;
+    scale: 1 0.3;
+  }
+  to {
+    opacity: 1;
+    scale: 1 1;
+  }
+}
+
+@keyframes doc-zoom-out {
+  from {
+    scale: 1.3;
+  }
+  to {
+    scale: 1;
+  }
+}
+
+@keyframes doc-elastic {
+  0% {
+    opacity: 0;
+    translate: 0 -50px;
+  }
+  60% {
+    opacity: 1;
+    translate: 0 10px;
+  }
+  80% {
+    translate: 0 -4px;
+  }
+  100% {
+    opacity: 1;
+    translate: 0 0;
+  }
+}
+
+@supports (animation-timeline: view()) {
+  .doc-card {
+    animation: doc-skew-in linear both;
+    animation-timeline: view();
+    animation-range: entry 0% entry 55%;
+  }
+
+  .doc-faq {
+    animation: doc-grow-y linear both;
+    animation-timeline: view();
+    animation-range: entry 0% entry 50%;
+  }
+
+  .doc-news-img img {
+    animation: doc-zoom-out linear both;
+    animation-timeline: view();
+    animation-range: entry 0% cover 45%;
+  }
+
+  .doc-res {
+    animation: doc-elastic linear both;
+    animation-timeline: view();
+    animation-range: entry 0% entry 65%;
+  }
+}
+
+/* Accessibilité */
+@media (prefers-reduced-motion: reduce) {
+  .doc *,
+  .doc *::before,
+  .doc *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+@media (max-width: 767.98px) {
+  .doc-section {
+    padding: 52px 0;
+  }
+  .doc-news-img img {
+    aspect-ratio: 16 / 9;
+  }
+  .btn-doc {
+    width: 100%;
+  }
+}

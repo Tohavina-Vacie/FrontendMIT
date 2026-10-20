@@ -1,0 +1,19 @@
+.cy-titre { font-size: clamp(1.35rem, 2.6vw, 1.9rem); font-weight: 600; margin: 0 0 56px; }
+.cy-intro { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr); gap: 56px; align-items: center; margin-bottom: 72px; }
+.cy-intro.sans-image { grid-template-columns: 1fr; }
+.cy-intro img { width: 100%; aspect-ratio: 2 / 1; object-fit: cover; display: block; }
+.cy-intro p { font-size: 1.1rem; line-height: 1.75; margin: 0; color: rgba(255, 255, 255, .96); }
+
+/* Trois encadrés gris, légèrement décalés comme sur la maquette */
+.cy-boites { display: grid; grid-template-columns: 1fr 1fr; gap: 32px 56px; align-items: start; }
+.cy-boite { background: #d9d9d9; color: #101828; padding: 24px 32px 28px; }
+.cy-boite:nth-child(2) { margin-top: 64px; }
+.cy-boite h2 { font-size: 1rem; font-weight: 500; margin: 0 0 6px; }
+.cy-boite ul { margin: 0; padding-left: 20px; line-height: 1.75; }
+
+@media (max-width: 768px) {
+  .cy-titre { margin-bottom: 32px; }
+  .cy-intro { grid-template-columns: 1fr; gap: 28px; }
+  .cy-boites { grid-template-columns: 1fr; }
+  .cy-boite:nth-child(2) { margin-top: 0; }
+}

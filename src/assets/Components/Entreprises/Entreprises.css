@@ -1,0 +1,678 @@
+@import url("https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Hanken+Grotesk:wght@400;500;600&family=JetBrains+Mono:wght@500;700&display=swap");
+
+.ent {
+  --n-orange: #e8761f;
+  --n-orange-light: #ffb066;
+  --n-card: #1a1d2e;
+  --n-card-border: #2b2f45;
+  --n-dark: #0b0d17;
+  --n-muted: #8fa0c8;
+  --n-band: #00c0e8; /* couleur de la bande de chiffres : modifiez-la ici */
+
+  font-family: "Hanken Grotesk", system-ui, sans-serif;
+  color: #fff;
+}
+
+.ent h1,
+.ent h2,
+.ent h3 {
+  font-family: "Outfit", system-ui, sans-serif;
+}
+
+.ent-mono {
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+}
+
+/* ---------- Sections ---------- */
+.ent-section {
+  padding: 80px 0;
+  background: linear-gradient(180deg, #061a47 0%, #11399b 100%);
+}
+
+.ent-heading {
+  max-width: 580px;
+  margin: 0 auto 48px;
+}
+
+.ent-heading h2 {
+  margin-bottom: 12px;
+  font-size: clamp(1.6rem, 3vw, 2rem);
+  font-weight: 700;
+}
+
+.ent-heading p {
+  margin: 0;
+  font-size: 0.92rem;
+  line-height: 1.6;
+  color: var(--n-muted);
+}
+
+.ent-text {
+  font-size: 0.8rem;
+  line-height: 1.6;
+  color: var(--n-muted);
+}
+
+.ent-lead {
+  max-width: 560px;
+  margin-bottom: 28px;
+  line-height: 1.7;
+  color: var(--n-muted);
+}
+
+/* ---------- Hero ---------- */
+.ent-hero h1 {
+  margin-bottom: 20px;
+  font-size: clamp(2rem, 4.5vw, 2.8rem);
+  font-weight: 700;
+}
+
+.ent-hero-img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  border-radius: 20px;
+}
+
+/* ---------- Bouton : une flèche glisse au survol ---------- */
+.btn-ent {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 26px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #fff;
+  background: var(--n-orange);
+  border: 0;
+  border-radius: 6px;
+  transition: gap 0.25s ease, background-color 0.2s ease;
+}
+
+.btn-ent::after {
+  max-width: 0;
+  overflow: hidden;
+  font-size: 1.1em;
+  content: "→";
+  opacity: 0;
+  transition: max-width 0.25s ease, opacity 0.25s ease;
+}
+
+.btn-ent:hover,
+.btn-ent:focus-visible,
+.btn-ent:active {
+  gap: 10px;
+  color: #fff;
+  background: #f08a3c;
+}
+
+.btn-ent:hover::after,
+.btn-ent:focus-visible::after {
+  max-width: 1.4em;
+  opacity: 1;
+}
+
+.btn-ent:disabled {
+  color: #fff;
+  background: var(--n-orange);
+  opacity: 0.6;
+}
+
+.btn-ent-block {
+  display: flex;
+  width: 100%;
+}
+
+/* =====================================================
+   1. « Pourquoi recruter » : coin orange + numéro qui s'agite
+   ===================================================== */
+.ent-why {
+  position: relative;
+  overflow: hidden;
+  padding: 22px;
+  background: var(--n-card);
+  border: 1px solid var(--n-card-border);
+  border-radius: 12px;
+  transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1), background-color 0.3s ease;
+}
+
+.ent-why::before {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 44px;
+  height: 44px;
+  content: "";
+  background: var(--n-orange);
+  clip-path: polygon(0 0, 100% 0, 100% 100%);
+  transform: scale(0);
+  transform-origin: top right;
+  transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.ent-why h3 {
+  margin-bottom: 8px;
+  font-size: 0.98rem;
+  font-weight: 700;
+}
+
+.ent-num {
+  display: inline-block;
+  margin-bottom: 14px;
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--n-orange);
+}
+
+@keyframes ent-wiggle {
+  0%,
+  100% {
+    rotate: 0deg;
+  }
+  25% {
+    rotate: -8deg;
+  }
+  50% {
+    rotate: 6deg;
+  }
+  75% {
+    rotate: -3deg;
+  }
+}
+
+.ent-why:hover {
+  background-color: #1f2338;
+  transform: scale(1.04);
+}
+
+.ent-why:hover::before {
+  transform: scale(1);
+}
+
+.ent-why:hover .ent-num {
+  animation: ent-wiggle 0.6s ease;
+}
+
+/* =====================================================
+   2. Profils : barre verticale qui monte + étiquette qui se remplit
+   ===================================================== */
+.ent-profile {
+  position: relative;
+  overflow: hidden;
+  padding: 24px 22px 24px 26px;
+  background: var(--n-dark);
+  border: 1px solid #1b2036;
+  border-radius: 12px;
+  transition: background-color 0.3s ease;
+}
+
+.ent-profile::before {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 4px;
+  height: 100%;
+  content: "";
+  background: linear-gradient(0deg, var(--n-orange), var(--n-orange-light));
+  transform: scaleY(0);
+  transform-origin: bottom;
+  transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.ent-profile h3 {
+  margin-bottom: 12px;
+  font-size: 0.98rem;
+  font-weight: 700;
+}
+
+.ent-tag {
+  display: inline-block;
+  margin-bottom: 14px;
+  padding: 3px 10px;
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+  font-size: 0.68rem;
+  color: var(--n-orange);
+  border: 1px solid rgba(232, 118, 31, 0.5);
+  border-radius: 999px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.ent-profile .ent-text {
+  transition: transform 0.4s ease, color 0.3s ease;
+}
+
+.ent-profile:hover {
+  background-color: #10142a;
+}
+
+.ent-profile:hover::before {
+  transform: scaleY(1);
+}
+
+.ent-profile:hover .ent-tag {
+  color: #fff;
+  background: var(--n-orange);
+}
+
+.ent-profile:hover .ent-text {
+  color: #c4d0ee;
+  transform: translateX(6px);
+}
+
+/* =====================================================
+   3. Processus : rayures orange animées + onde autour du numéro
+   ===================================================== */
+.ent-proc {
+  position: relative;
+  z-index: 0;
+  overflow: hidden;
+  padding: 20px;
+  background: var(--n-card);
+  border: 1px dashed var(--n-card-border);
+  border-radius: 12px;
+  transition: border-color 0.3s ease;
+}
+
+.ent-proc::before {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  content: "";
+  background-image: linear-gradient(
+    45deg,
+    rgba(232, 118, 31, 0.13) 25%,
+    transparent 25%,
+    transparent 50%,
+    rgba(232, 118, 31, 0.13) 50%,
+    rgba(232, 118, 31, 0.13) 75%,
+    transparent 75%
+  );
+  background-size: 32px 32px;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  animation: ent-stripes 1.2s linear infinite;
+  animation-play-state: paused;
+}
+
+@keyframes ent-stripes {
+  to {
+    background-position: 32px 0;
+  }
+}
+
+.ent-circle {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  margin-bottom: 14px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: #fff;
+  background: var(--n-orange);
+  border-radius: 50%;
+}
+
+.ent-proc h3 {
+  margin-bottom: 8px;
+  font-size: 0.95rem;
+  font-weight: 700;
+}
+
+@keyframes ent-ripple {
+  0% {
+    box-shadow: 0 0 0 0 rgba(232, 118, 31, 0.65);
+  }
+  100% {
+    box-shadow: 0 0 0 14px rgba(232, 118, 31, 0);
+  }
+}
+
+.ent-proc:hover {
+  border-color: var(--n-orange);
+}
+
+.ent-proc:hover::before {
+  opacity: 1;
+  animation-play-state: running;
+}
+
+.ent-proc:hover .ent-circle {
+  animation: ent-ripple 1s ease-out infinite;
+}
+
+/* =====================================================
+   4. Chiffres : compteur qui s'incrémente au défilement
+   ===================================================== */
+.ent-stats {
+  padding: 56px 0;
+  background: var(--n-band);
+}
+
+@property --ent-n {
+  syntax: "<integer>";
+  inherits: false;
+  initial-value: 0;
+}
+
+@keyframes ent-count {
+  from {
+    --ent-n: 0;
+  }
+  to {
+    --ent-n: var(--to);
+  }
+}
+
+.ent-stat {
+  margin-bottom: 6px;
+  font-size: clamp(1.8rem, 4vw, 2.3rem);
+  font-weight: 700;
+  color: #fff;
+  transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.ent-stat-label {
+  display: inline;
+  margin: 0;
+  padding-bottom: 3px;
+  font-size: 0.82rem;
+  color: #0b1b3a;
+  background: linear-gradient(currentColor, currentColor) no-repeat left bottom / 0 2px;
+  transition: background-size 0.35s ease;
+}
+
+.ent-stat-box:hover .ent-stat {
+  transform: scale(1.14);
+}
+
+.ent-stat-box:hover .ent-stat-label {
+  background-size: 100% 2px;
+}
+
+@supports (animation-timeline: view()) {
+  .ent-stat-fallback {
+    display: none;
+  }
+
+  .ent-stat {
+    counter-reset: ent-n var(--ent-n);
+    animation: ent-count linear both;
+    animation-timeline: view();
+    animation-range: entry 20% cover 35%;
+  }
+
+  .ent-stat::before {
+    content: counter(ent-n) var(--suffix);
+  }
+}
+
+/* =====================================================
+   5. Formulaire
+   ===================================================== */
+.ent-form {
+  max-width: 500px;
+  padding: 30px;
+  background: var(--n-dark);
+  border-radius: 22px;
+  transition: box-shadow 0.4s ease;
+}
+
+.ent-form:focus-within {
+  box-shadow: 0 0 0 1px rgba(232, 118, 31, 0.5), 0 20px 50px rgba(0, 0, 0, 0.4);
+}
+
+.ent-field label {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 0.76rem;
+  color: var(--n-muted);
+  transition: color 0.25s ease;
+}
+
+.ent-field:focus-within label {
+  color: var(--n-orange-light);
+}
+
+.ent-input-wrap {
+  position: relative;
+}
+
+.ent-input-wrap input,
+.ent-input-wrap textarea {
+  display: block;
+  width: 100%;
+  padding: 10px 12px;
+  font: inherit;
+  font-size: 0.8rem;
+  color: #fff;
+  background: var(--n-card);
+  border: 1px solid var(--n-card-border);
+  border-radius: 6px;
+  outline: none;
+  resize: vertical;
+  transition: border-color 0.25s ease, background-color 0.25s ease;
+}
+
+.ent-input-wrap textarea {
+  min-height: 96px;
+}
+
+.ent-input-wrap input::placeholder,
+.ent-input-wrap textarea::placeholder {
+  color: #6f7c9a;
+}
+
+.ent-input-wrap input:focus,
+.ent-input-wrap textarea:focus {
+  background: #20243a;
+  border-color: var(--n-orange);
+}
+
+.ent-input-wrap input[aria-invalid="true"],
+.ent-input-wrap textarea[aria-invalid="true"] {
+  border-color: #ff6b6b;
+}
+
+/* trait orange qui se déploie sous le champ actif */
+.ent-input-wrap::after {
+  position: absolute;
+  right: 6px;
+  bottom: 0;
+  left: 6px;
+  height: 2px;
+  content: "";
+  background: linear-gradient(90deg, var(--n-orange), var(--n-orange-light));
+  border-radius: 2px;
+  pointer-events: none;
+  transform: scaleX(0);
+  transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.ent-input-wrap:focus-within::after {
+  transform: scaleX(1);
+}
+
+.ent-error {
+  margin: 6px 0 0;
+  font-size: 0.76rem;
+  color: #ff6b6b;
+}
+
+.ent-success {
+  margin: 0 0 16px;
+  padding: 10px 14px;
+  font-size: 0.82rem;
+  color: #ffd9b8;
+  background: rgba(232, 118, 31, 0.14);
+  border: 1px solid rgba(232, 118, 31, 0.4);
+  border-radius: 8px;
+}
+
+/* =====================================================
+   Animations d'entrée (une différente par bloc)
+   ===================================================== */
+@keyframes ent-curtain {
+  from {
+    clip-path: inset(0 0 100% 0 round 20px);
+  }
+  to {
+    clip-path: inset(0 0 0 0 round 20px);
+  }
+}
+
+@keyframes ent-track {
+  from {
+    opacity: 0;
+    letter-spacing: 0.12em;
+    filter: blur(6px);
+  }
+  to {
+    opacity: 1;
+    letter-spacing: normal;
+    filter: blur(0);
+  }
+}
+
+@keyframes ent-fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes ent-pop {
+  0% {
+    opacity: 0;
+    scale: 0.7;
+  }
+  70% {
+    opacity: 1;
+    scale: 1.05;
+  }
+  100% {
+    opacity: 1;
+    scale: 1;
+  }
+}
+
+@keyframes ent-from-left {
+  from {
+    opacity: 0;
+    translate: -60px 0;
+  }
+  to {
+    opacity: 1;
+    translate: 0 0;
+  }
+}
+
+@keyframes ent-from-right {
+  from {
+    opacity: 0;
+    translate: 60px 0;
+  }
+  to {
+    opacity: 1;
+    translate: 0 0;
+  }
+}
+
+@keyframes ent-unfold {
+  from {
+    clip-path: inset(50% 0 50% 0);
+  }
+  to {
+    clip-path: inset(0 0 0 0);
+  }
+}
+
+@keyframes ent-rise {
+  from {
+    opacity: 0;
+    translate: 0 50px;
+  }
+  to {
+    opacity: 1;
+    translate: 0 0;
+  }
+}
+
+/* Hero : rideau sur la photo, titre qui se resserre */
+.ent-hero-img {
+  animation: ent-curtain 1s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.ent-hero h1 {
+  animation: ent-track 0.9s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.ent-hero .ent-lead {
+  animation: ent-fade 0.9s 0.25s ease both;
+}
+
+/* Au défilement */
+@supports (animation-timeline: view()) {
+  .ent-why {
+    animation: ent-pop linear both;
+    animation-timeline: view();
+    animation-range: entry 0% entry 55%;
+  }
+
+  .ent-profile {
+    animation: ent-from-left linear both;
+    animation-timeline: view();
+    animation-range: entry 0% entry 50%;
+  }
+
+  .col-lg-3:nth-child(even) > .ent-profile {
+    animation-name: ent-from-right;
+  }
+
+  .ent-proc {
+    animation: ent-unfold linear both;
+    animation-timeline: view();
+    animation-range: entry 0% entry 55%;
+  }
+
+  .ent-form {
+    animation: ent-rise linear both;
+    animation-timeline: view();
+    animation-range: entry 0% entry 45%;
+  }
+}
+
+/* Accessibilité */
+@media (prefers-reduced-motion: reduce) {
+  .ent *,
+  .ent *::before,
+  .ent *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+
+  .ent-why:hover,
+  .ent-stat-box:hover .ent-stat {
+    transform: none;
+  }
+}
+
+@media (max-width: 767.98px) {
+  .ent-section {
+    padding: 56px 0;
+  }
+  .ent-heading {
+    margin-bottom: 32px;
+  }
+  .ent-form {
+    padding: 22px 18px;
+  }
+  .btn-ent:not(.btn-ent-block) {
+    width: 100%;
+  }
+}

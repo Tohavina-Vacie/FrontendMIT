@@ -1,0 +1,149 @@
+@import url("https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;800&display=swap");
+
+:root {
+  --bg-page: #031a3d;
+  --bg-card: #0a0c15;
+  --bg-input: #051a40;
+  --border-input: #1b2a52;
+  --text-muted: #8f9bb5;
+  --accent: #e97d1f;
+  --accent-hover: #f58f35;
+}
+
+body {
+  font-family: "Outfit", system-ui, sans-serif;
+}
+
+.signup-page {
+  min-height: 100vh;
+  background: var(--bg-page);
+}
+
+.signup-card {
+  background: var(--bg-card);
+  color: #fff;
+  border-radius: 20px;
+}
+
+.signup-title {
+  font-size: 2rem;
+  font-weight: 800;
+}
+
+.signup-card .form-label {
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--text-muted);
+}
+
+.signup-card .form-control {
+  color: #fff;
+  background-color: var(--bg-input);
+  border-color: var(--border-input);
+  font-size: 0.95rem;
+}
+
+.signup-card .form-control::placeholder {
+  color: #6f7c9a;
+}
+
+.signup-card .form-control:focus {
+  color: #fff;
+  background-color: var(--bg-input);
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(233, 125, 31, 0.25);
+}
+
+/* évite que l'icône d'erreur Bootstrap chevauche l'œil */
+.signup-card .form-control.is-invalid {
+  background-image: none;
+  padding-right: 3rem;
+}
+
+.toggle-eye {
+  position: absolute;
+  top: 50%;
+  right: 8px;
+  display: grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  color: var(--text-muted);
+  border: 0;
+  transform: translateY(-50%);
+}
+
+.toggle-eye:hover {
+  color: #fff;
+}
+
+.submit-row {
+  margin-top: 76px;
+}
+
+.btn-brand {
+  height: 36px;
+  padding: 0 16px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  line-height: 36px;
+  color: #fff;
+  background: var(--accent);
+  border: 0;
+  border-radius: 6px;
+}
+
+@media (min-width: 576px) {
+  .btn-brand {
+    width: 160px;
+  }
+}
+
+@media (max-width: 575.98px) {
+  .submit-row {
+    margin-top: 40px;
+  }
+}
+
+.btn-brand:hover,
+.btn-brand:focus-visible {
+  color: #fff;
+  background: var(--accent-hover);
+}
+
+.btn-brand:active {
+  color: #fff;
+  background: var(--accent);
+}
+
+.btn-brand:disabled {
+  color: #fff;
+  background: var(--accent);
+  opacity: 0.6;
+}
+
+/* Ligne "changer de page" + bouton pilule (partagé avec Login) */
+.switch-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 16px;
+  margin-top: 20px;
+  font-weight: 600;
+}
+
+.pill-link {
+  padding: 8px 20px;
+  color: #fff;
+  font-weight: 700;
+  text-decoration: none;
+  background: #1443a6;
+  border-radius: 999px;
+  transition: background 0.15s;
+}
+
+.pill-link:hover,
+.pill-link:focus-visible {
+  color: #fff;
+  background: #1a52c9;
+}

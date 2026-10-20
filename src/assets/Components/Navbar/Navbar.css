@@ -1,0 +1,108 @@
+:root {
+  --nav-height: 72px;
+  --nav-orange: #ff8c28;
+  --nav-orange-hover: #ffa047;
+}
+
+/* décale le contenu sous la barre fixe */
+body {
+  padding-top: var(--nav-height);
+}
+
+/* les pages login / inscription ne dépassent plus de l'écran */
+body .signup-page {
+  min-height: calc(100vh - var(--nav-height));
+}
+
+.navbar-mit {
+  min-height: var(--nav-height);
+  font-family: "Outfit", system-ui, sans-serif;
+  background: rgba(7, 23, 63, 0.92);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.brand-mit {
+  display: flex;
+  align-items: flex-end;
+  gap: 10px;
+  padding: 0;
+}
+
+.brand-mit-logo {
+  font-size: 1.9rem;
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: 0.02em;
+  color: #fff;
+}
+
+.brand-mit-sub {
+  padding-bottom: 3px;
+  font-size: 0.55rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  color: #e8761f;
+}
+
+.navbar-mit .nav-link {
+  padding: 8px 14px;
+  font-weight: 500;
+  color: #9fb0d8;
+  transition: color 0.15s;
+}
+
+.navbar-mit .nav-link:hover,
+.navbar-mit .nav-link:focus-visible {
+  color: #fff;
+}
+
+.navbar-mit .nav-link.active {
+  color: #e8761f;
+}
+
+.btn-nav {
+  padding: 6px 16px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #fff;
+  background: var(--nav-orange);
+  border: 0;
+  border-radius: 6px;
+}
+
+.btn-nav:hover,
+.btn-nav:focus-visible,
+.btn-nav:active {
+  color: #fff;
+  background: var(--nav-orange-hover);
+}
+
+.navbar-mit .navbar-toggler {
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+.navbar-mit .navbar-toggler:focus {
+  box-shadow: 0 0 0 3px rgba(255, 140, 40, 0.35);
+}
+
+.btn-nav-dark,
+.btn-nav-dark:active {
+  background: #14151f;
+  border: 1px solid #2b2f45;
+}
+
+.btn-nav-dark:hover,
+.btn-nav-dark:focus-visible {
+  background: #22243a;
+}
+
+.btn-nav-mid,
+.btn-nav-mid:active {
+  background: #e8761f;
+}
+
+.btn-nav-mid:hover,
+.btn-nav-mid:focus-visible {
+  background: #f08a3c;
+}

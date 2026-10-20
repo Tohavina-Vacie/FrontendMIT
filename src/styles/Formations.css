@@ -1,0 +1,12 @@
+.cat-page { min-height: 100vh; background: linear-gradient(160deg, var(--nuit), var(--nuit-2)); color: #fff; padding: 48px 16px; }
+.cat-page .form-control, .cat-page .form-select { background: var(--carte); border: 1px solid #27407f; color: #fff; }
+.cat-page .form-control:focus, .cat-page .form-select:focus { border-color: var(--orange); box-shadow: 0 0 0 3px rgba(255,122,26,.25); }
+.cat-page .form-control::placeholder { color: #8fa3d1; }
+.formation-card { background: var(--carte); border-radius: 14px; overflow: hidden; height: 100%; display: flex; flex-direction: column; }
+.formation-card .visuel { height: 170px; width: 100%; object-fit: cover; background: #0a1a3f; display: flex; align-items: center; justify-content: center; color: #8fa3d1; }
+.formation-card .corps { padding: 18px; display: flex; flex-direction: column; flex-grow: 1; }
+.formation-card p { color: #c9d6f5; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+.formation-card .infos { margin-top: auto; }
+.pastille { display: inline-block; background: #0a1a3f; border: 1px solid #27407f; border-radius: 999px; padding: 2px 10px; font-size: .8rem; margin: 0 6px 6px 0; color: #c9d6f5; }
+.pastille.accent { border-color: var(--orange); color: var(--orange); }
+.detail-image { width: 100%; max-height: 360px; object-fit: cover; border-radius: 14px; }

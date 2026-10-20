@@ -1,0 +1,391 @@
+@import url("https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Hanken+Grotesk:wght@400;500;600&family=JetBrains+Mono:wght@500;700&display=swap");
+
+.fmt {
+  --f-orange: #e8761f;
+  --f-orange-light: #ffb066;
+  --f-card: #0d101f;
+  --f-card-border: #1b2036;
+  --f-muted: #8fa0c8;
+
+  font-family: "Hanken Grotesk", system-ui, sans-serif;
+  color: #fff;
+}
+
+.fmt h1,
+.fmt h2,
+.fmt h3 {
+  font-family: "Outfit", system-ui, sans-serif;
+}
+
+.fmt-mono {
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+}
+
+.fmt-muted {
+  color: var(--f-muted);
+}
+
+/* ---------- Sections ---------- */
+.fmt-section {
+  padding: 72px 0;
+  background: linear-gradient(180deg, #061a47 0%, #11399b 100%);
+}
+
+.fmt-dark {
+  background: linear-gradient(180deg, #07080f 0%, #0a0c18 100%);
+}
+
+.fmt-heading {
+  margin-bottom: 32px;
+}
+
+.fmt-heading h2 {
+  margin-bottom: 10px;
+  font-size: clamp(1.5rem, 3vw, 1.9rem);
+  font-weight: 700;
+}
+
+.fmt-heading p {
+  margin: 0;
+  font-size: 0.9rem;
+  color: var(--f-muted);
+}
+
+/* ---------- Hero ---------- */
+.fmt-hero {
+  padding: 72px 0 80px;
+}
+
+.fmt-hero h1 {
+  margin-bottom: 16px;
+  font-size: clamp(2rem, 5vw, 3rem);
+  font-weight: 700;
+}
+
+.fmt-lead {
+  max-width: 640px;
+  margin: 0;
+  line-height: 1.7;
+  color: var(--f-muted);
+}
+
+/* ---------- Cartes formation (Bachelors / Masters) ---------- */
+.fmt-card {
+  position: relative;
+  overflow: hidden;
+  padding: 26px 24px 28px;
+  background: var(--f-card);
+  border: 1px solid var(--f-card-border);
+  border-radius: 16px;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.fmt-card h3 {
+  margin-bottom: 6px;
+  font-size: 1.4rem;
+  font-weight: 700;
+}
+
+.fmt-card .fmt-muted {
+  margin-bottom: 20px;
+  font-size: 0.82rem;
+}
+
+.fmt-badge {
+  padding: 4px 12px;
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: #fff;
+  background: var(--f-orange);
+  border-radius: 999px;
+}
+
+.fmt-access {
+  font-size: 0.66rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--f-muted);
+}
+
+.fmt-label {
+  margin: 0 0 10px;
+  font-size: 0.64rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--f-orange);
+}
+
+.fmt-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.fmt-chip {
+  padding: 6px 12px;
+  font-size: 0.74rem;
+  color: #fff;
+  background: #1b1f31;
+  border-radius: 6px;
+  transition:
+    transform 0.3s ease,
+    background-color 0.2s ease;
+  transition-delay: calc(var(--c, 0) * 40ms), 0s;
+}
+
+/* Hover : barre orange qui se dessine en haut + puces qui se soulèvent en cascade */
+.fmt-card::before {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  content: "";
+  background: linear-gradient(90deg, var(--f-orange), var(--f-orange-light));
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.fmt-card:hover,
+.fmt-card:focus-within {
+  border-color: rgba(232, 118, 31, 0.45);
+  box-shadow:
+    inset 0 0 70px rgba(232, 118, 31, 0.08),
+    0 10px 30px rgba(0, 0, 0, 0.35);
+}
+
+.fmt-card:hover::before,
+.fmt-card:focus-within::before {
+  transform: scaleX(1);
+}
+
+.fmt-card:hover .fmt-chip {
+  transform: translateY(-3px);
+}
+
+.fmt-card .fmt-chip:hover {
+  color: #fff;
+  background: var(--f-orange);
+  transition-delay: 0s;
+}
+
+/* ---------- Cartes débouchés ---------- */
+.fmt-job {
+  padding: 22px 22px 40px;
+  background:
+    linear-gradient(90deg, rgba(232, 118, 31, 0.18), rgba(232, 118, 31, 0.04)) no-repeat left / 0% 100%,
+    var(--f-card);
+  border: 1px solid var(--f-card-border);
+  border-radius: 14px;
+  transition:
+    background-size 0.5s ease,
+    transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1),
+    border-color 0.3s ease;
+}
+
+.fmt-job h3 {
+  margin-bottom: 14px;
+  font-size: 0.95rem;
+  font-weight: 700;
+}
+
+.fmt-salary {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--f-orange);
+}
+
+.fmt-dot {
+  flex-shrink: 0;
+  width: 8px;
+  height: 8px;
+  background: var(--f-orange);
+  border-radius: 50%;
+}
+
+/* Hover : remplissage orange qui balaie la carte, effet ressort, point qui pulse */
+.fmt-job:hover {
+  background-size: 100% 100%;
+  border-color: var(--f-orange);
+  transform: scale(1.04);
+}
+
+.fmt-job:hover .fmt-dot {
+  animation: fmt-pulse 1s ease-out infinite;
+}
+
+@keyframes fmt-pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(232, 118, 31, 0.6);
+  }
+  100% {
+    box-shadow: 0 0 0 10px rgba(232, 118, 31, 0);
+  }
+}
+
+/* ---------- Cartes calendrier ---------- */
+.fmt-step {
+  position: relative;
+  overflow: hidden;
+  padding: 18px 18px 22px;
+  background: var(--f-card);
+  border: 1px solid var(--f-card-border);
+  border-radius: 14px;
+  transition:
+    transform 0.4s ease,
+    background-color 0.3s ease;
+}
+
+.fmt-step-top {
+  font-size: 0.7rem;
+}
+
+.fmt-step-num {
+  font-weight: 700;
+  color: var(--f-orange);
+  transition: letter-spacing 0.3s ease;
+}
+
+.fmt-step h3 {
+  margin-bottom: 8px;
+  font-size: 0.98rem;
+  font-weight: 700;
+  transition: color 0.3s ease;
+}
+
+.fmt-step p {
+  font-size: 0.78rem;
+  line-height: 1.6;
+  color: var(--f-muted);
+}
+
+.fmt-step::after {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: 4px;
+  content: "";
+  background: var(--f-orange);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.5s ease;
+}
+
+/* Hover : légère inclinaison 3D, barre de progression en bas, titre orange */
+.fmt-step:hover {
+  background-color: #131937;
+  transform: perspective(700px) rotateY(-6deg) scale(1.02);
+}
+
+.fmt-step:hover::after {
+  transform: scaleX(1);
+}
+
+.fmt-step:hover h3 {
+  color: var(--f-orange-light);
+}
+
+.fmt-step:hover .fmt-step-num {
+  letter-spacing: 0.08em;
+}
+
+/* =====================================================
+   Animations d'entrée
+   ===================================================== */
+@keyframes fmt-slide-in {
+  from {
+    opacity: 0;
+    translate: -48px 0;
+  }
+  to {
+    opacity: 1;
+    translate: 0 0;
+  }
+}
+
+@keyframes fmt-zoom-in {
+  from {
+    opacity: 0;
+    scale: 0.85;
+  }
+  to {
+    opacity: 1;
+    scale: 1;
+  }
+}
+
+@keyframes fmt-tilt-in {
+  from {
+    opacity: 0;
+    rotate: -4deg;
+    translate: 0 30px;
+  }
+  to {
+    opacity: 1;
+    rotate: 0deg;
+    translate: 0 0;
+  }
+}
+
+/* Hero : le titre glisse depuis la gauche au chargement */
+.fmt-hero h1 {
+  animation: fmt-slide-in 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.fmt-hero .fmt-lead {
+  animation: fmt-slide-in 0.7s 0.15s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+/* Au défilement : chaque type de carte a sa propre entrée */
+@supports (animation-timeline: view()) {
+  .fmt-card {
+    animation: fmt-slide-in linear both;
+    animation-timeline: view();
+    animation-range: entry 0% entry 45%;
+  }
+
+  .fmt-job {
+    animation: fmt-zoom-in linear both;
+    animation-timeline: view();
+    animation-range: entry 0% entry 45%;
+  }
+
+  .fmt-step {
+    animation: fmt-tilt-in linear both;
+    animation-timeline: view();
+    animation-range: entry 0% entry 45%;
+  }
+}
+
+/* Accessibilité */
+@media (prefers-reduced-motion: reduce) {
+  .fmt *,
+  .fmt *::before,
+  .fmt *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+
+  .fmt-job:hover,
+  .fmt-step:hover,
+  .fmt-card:hover .fmt-chip {
+    transform: none;
+  }
+}
+
+@media (max-width: 767.98px) {
+  .fmt-section {
+    padding: 52px 0;
+  }
+  .fmt-card h3 {
+    font-size: 1.2rem;
+  }
+}

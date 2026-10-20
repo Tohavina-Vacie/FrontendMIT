@@ -1,0 +1,13 @@
+.fs-titre-section { font-size: clamp(1.35rem, 2.6vw, 1.9rem); font-weight: 600; margin: 0 0 28px; }
+.fs-intro { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: 48px; align-items: center; margin-bottom: 64px; }
+.fs-intro img { width: 100%; aspect-ratio: 3 / 2; object-fit: cover; border-radius: 22px; display: block; }
+.fs-texte p { font-size: 1.08rem; line-height: 1.9; margin: 0 0 22px; color: rgba(255, 255, 255, .95); }
+.fs-texte p:last-child { margin-bottom: 0; }
+.fs-cartes { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 28px; margin-bottom: 72px; align-items: start; }
+.fs-carte { background: #161c2e; border-radius: 6px; padding: 22px 24px; }
+.fs-carte h3 { font-size: 1rem; font-weight: 500; margin: 0 0 4px; }
+.fs-carte p { margin: 0 0 6px; line-height: 1.5; }
+.fs-carte ul { margin: 0; padding-left: 22px; line-height: 1.8; }
+.fs-atouts { list-style: disc; padding-left: 26px; margin: 0; }
+.fs-atouts li { font-size: 1.05rem; line-height: 2.1; }
+@media (max-width: 768px) { .fs-intro { grid-template-columns: 1fr; gap: 28px; } }

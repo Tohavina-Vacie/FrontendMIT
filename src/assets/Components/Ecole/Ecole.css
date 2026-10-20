@@ -1,0 +1,348 @@
+@import url("https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Hanken+Grotesk:wght@400;500;600&family=JetBrains+Mono:wght@500;700&display=swap");
+
+.ecole {
+  --e-orange: #e8761f;
+  --e-orange-hover: #f08a3c;
+  --e-card: #1a1d2e;
+  --e-card-border: #2b2f45;
+  --e-muted: #8fa0c8;
+
+  font-family: "Hanken Grotesk", system-ui, sans-serif;
+  color: #fff;
+}
+
+.ecole h1,
+.ecole h2,
+.ecole h3 {
+  font-family: "Outfit", system-ui, sans-serif;
+}
+
+.ecole-section {
+  padding: 80px 0;
+  background: linear-gradient(180deg, #061a47 0%, #11399b 100%);
+}
+
+/* ---------- Titres ---------- */
+.ecole-heading {
+  max-width: 560px;
+  margin: 0 auto 48px;
+}
+
+.ecole-heading h2,
+.ecole-cta h2 {
+  margin-bottom: 12px;
+  font-size: clamp(1.6rem, 3vw, 2rem);
+  font-weight: 700;
+}
+
+.ecole-heading p {
+  margin: 0;
+  font-size: 0.92rem;
+  line-height: 1.6;
+  color: var(--e-muted);
+}
+
+.ecole-mono {
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+}
+
+.ecole-label {
+  margin-bottom: 20px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--e-orange);
+}
+
+.ecole-muted {
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: var(--e-muted);
+}
+
+/* ---------- Hero ---------- */
+.ecole-hero h1 {
+  margin-bottom: 20px;
+  font-size: clamp(2rem, 4.5vw, 2.8rem);
+  font-weight: 700;
+}
+
+.ecole-lead {
+  max-width: 540px;
+  margin-bottom: 28px;
+  font-size: 1rem;
+  line-height: 1.7;
+  color: var(--e-muted);
+}
+
+.btn-ecole {
+  padding: 12px 26px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #fff;
+  background: var(--e-orange);
+  border: 0;
+  border-radius: 6px;
+}
+
+.btn-ecole:hover,
+.btn-ecole:focus-visible,
+.btn-ecole:active {
+  color: #fff;
+  background: var(--e-orange-hover);
+}
+
+.ecole-img {
+  display: block;
+  width: 100%;
+  object-fit: cover;
+  border-radius: 20px;
+}
+
+/* ---------- Cartes ---------- */
+.ecole-card {
+  padding: 22px;
+  background: var(--e-card);
+  border: 1px solid var(--e-card-border);
+  border-radius: 12px;
+}
+
+.ecole-card h3 {
+  margin-bottom: 8px;
+  font-size: 0.95rem;
+  font-weight: 700;
+}
+
+.ecole-card p {
+  font-size: 0.8rem;
+  line-height: 1.6;
+  color: var(--e-muted);
+}
+
+.ecole-year {
+  margin-bottom: 14px;
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--e-orange) !important;
+}
+
+/* ---------- Campus ---------- */
+.ecole-img-campus {
+  aspect-ratio: 2 / 1;
+  margin-bottom: 20px;
+}
+
+.ecole-campus-title {
+  margin-bottom: 8px;
+  font-size: 1.05rem;
+  font-weight: 700;
+}
+
+/* ---------- Équipe ---------- */
+.ecole-team-card {
+  min-height: 190px;
+}
+
+.ecole-avatar {
+  flex-shrink: 0;
+  width: 52px;
+  height: 52px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.ecole-avatar-fallback {
+  display: grid;
+  place-items: center;
+  font-weight: 700;
+  color: #fff;
+  background: #11399b;
+}
+
+.ecole-role {
+  font-size: 0.68rem !important;
+  line-height: 1.4;
+  color: var(--e-orange) !important;
+}
+
+/* ---------- Partenaires ---------- */
+.ecole-partners {
+  padding: 56px 0;
+}
+
+.ecole-partners li {
+  font-family: "Outfit", system-ui, sans-serif;
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--e-muted);
+}
+
+/* ---------- Valeurs ---------- */
+.ecole-value {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 18px 16px;
+}
+
+.ecole-value h3 {
+  margin-bottom: 4px;
+  font-size: 0.9rem;
+}
+
+.ecole-value p {
+  font-size: 0.74rem;
+}
+
+.ecole-dot {
+  flex-shrink: 0;
+  width: 12px;
+  height: 12px;
+  background: var(--e-orange);
+  border-radius: 50%;
+}
+
+/* ---------- Appel à l'action ---------- */
+.ecole-cta {
+  padding: 90px 0;
+}
+
+@media (max-width: 767.98px) {
+  .ecole-section {
+    padding: 56px 0;
+  }
+  .ecole-heading {
+    margin-bottom: 32px;
+  }
+  .btn-ecole {
+    width: 100%;
+  }
+}
+
+/* =====================================================
+   Animations (CSS uniquement)
+   ===================================================== */
+
+/* ---------- Hover des cartes ---------- */
+.ecole-card {
+  transition:
+    transform 0.25s ease,
+    border-color 0.25s ease,
+    box-shadow 0.25s ease,
+    background-color 0.25s ease;
+}
+
+.ecole-card:hover,
+.ecole-card:focus-within {
+  background-color: #20243a;
+  border-color: var(--e-orange);
+  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.35), 0 0 0 1px rgba(232, 118, 31, 0.25);
+  transform: translateY(-6px);
+}
+
+/* Jalons : l'année grossit légèrement */
+.ecole-year {
+  display: inline-block;
+  transform-origin: left center;
+  transition: transform 0.25s ease;
+}
+
+.ecole-card:hover .ecole-year {
+  transform: scale(1.1);
+}
+
+/* Équipe : anneau orange autour de la photo */
+.ecole-avatar {
+  transition: box-shadow 0.25s ease, transform 0.25s ease;
+}
+
+.ecole-card:hover .ecole-avatar {
+  box-shadow: 0 0 0 3px var(--e-orange);
+  transform: scale(1.05);
+}
+
+/* Valeurs : le point orange pulse */
+.ecole-dot {
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.ecole-card:hover .ecole-dot {
+  transform: scale(1.25);
+  box-shadow: 0 0 0 5px rgba(232, 118, 31, 0.25);
+}
+
+/* ---------- Images (hero et campus) ---------- */
+.ecole-img {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.ecole-img:hover {
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.4);
+  transform: translateY(-4px);
+}
+
+/* ---------- Partenaires ---------- */
+.ecole-partners li {
+  cursor: default;
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.ecole-partners li:hover {
+  color: #fff;
+  transform: translateY(-2px);
+}
+
+/* ---------- Boutons ---------- */
+.btn-ecole {
+  transition: transform 0.2s ease, background-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.btn-ecole:hover {
+  box-shadow: 0 8px 20px rgba(232, 118, 31, 0.35);
+  transform: translateY(-2px);
+}
+
+/* ---------- Apparition au défilement ----------
+   Utilise « translate » (et non « transform ») pour ne pas
+   entrer en conflit avec les effets de survol ci-dessus. */
+@keyframes ecole-reveal {
+  from {
+    opacity: 0;
+    translate: 0 36px;
+  }
+  to {
+    opacity: 1;
+    translate: 0 0;
+  }
+}
+
+@supports (animation-timeline: view()) {
+  .ecole-heading,
+  .ecole-card,
+  .ecole-img-campus,
+  .ecole-campus-title,
+  .ecole-partners .container,
+  .ecole-cta .container {
+    animation: ecole-reveal linear both;
+    animation-timeline: view();
+    animation-range: entry 0% entry 40%;
+  }
+}
+
+/* Respect des préférences d'accessibilité */
+@media (prefers-reduced-motion: reduce) {
+  .ecole *,
+  .ecole *::before,
+  .ecole *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+
+  .ecole-card:hover,
+  .ecole-img:hover,
+  .btn-ecole:hover {
+    transform: none;
+  }
+}

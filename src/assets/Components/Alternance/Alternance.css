@@ -1,0 +1,553 @@
+@import url("https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Hanken+Grotesk:wght@400;500;600&family=JetBrains+Mono:wght@500;700&display=swap");
+
+.alt {
+  --a-orange: #e8761f;
+  --a-orange-light: #ffb066;
+  --a-card: #1a1d2e;
+  --a-card-border: #2b2f45;
+  --a-dark: #0b0d17;
+  --a-muted: #8fa0c8;
+
+  font-family: "Hanken Grotesk", system-ui, sans-serif;
+  color: #fff;
+}
+
+.alt h1,
+.alt h2,
+.alt h3 {
+  font-family: "Outfit", system-ui, sans-serif;
+}
+
+.alt-mono {
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+}
+
+/* ---------- Sections ---------- */
+.alt-section {
+  padding: 80px 0;
+  background: linear-gradient(180deg, #061a47 0%, #11399b 100%);
+}
+
+.alt-heading {
+  max-width: 560px;
+  margin: 0 auto 48px;
+}
+
+.alt-heading h2,
+.alt-cta h2 {
+  margin-bottom: 12px;
+  font-size: clamp(1.6rem, 3vw, 2rem);
+  font-weight: 700;
+}
+
+.alt-heading p {
+  margin: 0;
+  font-size: 0.92rem;
+  line-height: 1.6;
+  color: var(--a-muted);
+}
+
+.alt-lead {
+  max-width: 540px;
+  margin-bottom: 28px;
+  line-height: 1.7;
+  color: var(--a-muted);
+}
+
+.alt-label {
+  margin-bottom: 20px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--a-orange);
+}
+
+.alt-text {
+  font-size: 0.8rem;
+  line-height: 1.6;
+  color: var(--a-muted);
+}
+
+/* ---------- Hero ---------- */
+.alt-hero h1 {
+  margin-bottom: 20px;
+  font-size: clamp(2rem, 4.5vw, 2.8rem);
+  font-weight: 700;
+}
+
+.alt-hero-img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  border-radius: 20px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.35);
+}
+
+/* ---------- Bouton (reflet qui traverse au survol) ---------- */
+.btn-alt {
+  position: relative;
+  overflow: hidden;
+  padding: 12px 26px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #fff;
+  background: var(--a-orange);
+  border: 0;
+  border-radius: 6px;
+}
+
+.btn-alt::after {
+  position: absolute;
+  top: 0;
+  left: -75%;
+  width: 50%;
+  height: 100%;
+  content: "";
+  background: linear-gradient(100deg, transparent, rgba(255, 255, 255, 0.45), transparent);
+  transform: skewX(-20deg);
+}
+
+.btn-alt:hover,
+.btn-alt:focus-visible,
+.btn-alt:active {
+  color: #fff;
+  background: var(--a-orange);
+}
+
+.btn-alt:hover::after,
+.btn-alt:focus-visible::after {
+  left: 130%;
+  transition: left 0.7s ease;
+}
+
+/* =====================================================
+   1. Étapes : anneau lumineux qui tourne autour de la carte
+   ===================================================== */
+@property --alt-angle {
+  syntax: "<angle>";
+  inherits: false;
+  initial-value: 0deg;
+}
+
+@keyframes alt-spin {
+  to {
+    --alt-angle: 360deg;
+  }
+}
+
+.alt-step {
+  position: relative;
+  z-index: 0;
+  padding: 22px;
+  isolation: isolate;
+  border-radius: 12px;
+}
+
+/* anneau (derrière) */
+.alt-step::before {
+  position: absolute;
+  inset: -2px;
+  z-index: -2;
+  content: "";
+  background: conic-gradient(
+    from var(--alt-angle),
+    transparent 0 60%,
+    var(--a-orange) 80%,
+    var(--a-orange-light) 90%,
+    transparent 100%
+  );
+  border-radius: 14px;
+  opacity: 0;
+  transition: opacity 0.35s ease;
+}
+
+/* fond de la carte (devant l'anneau) */
+.alt-step::after {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  content: "";
+  background: var(--a-card);
+  border: 1px solid var(--a-card-border);
+  border-radius: 12px;
+}
+
+.alt-step h3 {
+  margin-bottom: 8px;
+  font-size: 0.98rem;
+  font-weight: 700;
+}
+
+.alt-num {
+  display: inline-block;
+  margin-bottom: 14px;
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--a-orange);
+  transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1), color 0.3s ease;
+}
+
+.alt-step:hover::before {
+  opacity: 1;
+  animation: alt-spin 2.5s linear infinite;
+}
+
+.alt-step:hover .alt-num {
+  color: var(--a-orange-light);
+  transform: scale(1.25) translateX(6px);
+}
+
+/* =====================================================
+   2. Rythme : effet accordéon, le jour survolé s'élargit
+   ===================================================== */
+.alt-week {
+  padding: 22px;
+  background: var(--a-dark);
+  border-radius: 20px;
+}
+
+.alt-days {
+  display: flex;
+  gap: 12px;
+}
+
+.alt-day {
+  flex: 1 1 0;
+  padding: 20px 14px;
+  text-align: center;
+  background: var(--a-card);
+  border: 1px solid var(--a-card-border);
+  border-radius: 10px;
+  transition:
+    flex-grow 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+    background-color 0.3s ease,
+    border-color 0.3s ease;
+}
+
+.alt-day h3 {
+  margin-bottom: 10px;
+  font-size: 1rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.alt-place {
+  margin-bottom: 8px;
+  font-size: 0.68rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--a-orange);
+  transition: color 0.3s ease;
+}
+
+.alt-desc {
+  font-size: 0.75rem;
+  color: var(--a-muted);
+  transition: color 0.3s ease;
+}
+
+.alt-day.is-school {
+  background: var(--a-orange);
+  border-color: var(--a-orange);
+}
+
+.alt-day.is-school .alt-place,
+.alt-day.is-school .alt-desc {
+  color: #fff;
+}
+
+.alt-day:hover {
+  flex-grow: 1.7;
+}
+
+.alt-day:not(.is-school):hover {
+  background: #1443a6;
+  border-color: #3b6fe0;
+}
+
+.alt-day:not(.is-school):hover .alt-place {
+  color: #ffd1a1;
+}
+
+.alt-day:not(.is-school):hover .alt-desc {
+  color: #fff;
+}
+
+/* =====================================================
+   3. Avantages : remplissage orange en diagonale
+   ===================================================== */
+.alt-perk {
+  padding: 22px;
+  background: linear-gradient(135deg, var(--a-orange) 0 50%, var(--a-card) 50% 100%);
+  background-size: 300% 300%;
+  background-position: 100% 100%;
+  border: 1px solid var(--a-card-border);
+  border-radius: 12px;
+  transition: background-position 0.55s ease, border-color 0.3s ease;
+}
+
+.alt-perk h3 {
+  margin-bottom: 8px;
+  font-size: 0.98rem;
+  font-weight: 700;
+}
+
+.alt-stat {
+  display: inline-block;
+  margin-bottom: 14px;
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--a-orange);
+  transform-origin: left center;
+  transition: color 0.3s ease, transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.alt-perk .alt-text {
+  transition: color 0.3s ease;
+}
+
+.alt-perk:hover {
+  background-position: 0% 0%;
+  border-color: var(--a-orange);
+}
+
+.alt-perk:hover .alt-stat {
+  color: #fff;
+  transform: scale(1.15);
+}
+
+.alt-perk:hover .alt-text {
+  color: rgba(255, 255, 255, 0.92);
+}
+
+/* =====================================================
+   4. Témoignages : guillemet, barre latérale, avatar qui tourne
+   ===================================================== */
+.alt-quote {
+  position: relative;
+  margin: 0;
+  padding: 26px 24px;
+  overflow: hidden;
+  background: var(--a-dark);
+  border: 1px solid #1b2036;
+  border-radius: 12px;
+  transition: box-shadow 0.35s ease, background-color 0.3s ease;
+}
+
+.alt-quote blockquote {
+  margin: 0 0 24px;
+  font-size: 0.95rem;
+  line-height: 1.7;
+}
+
+.alt-quote strong {
+  display: block;
+  font-size: 0.85rem;
+}
+
+.alt-promo {
+  display: block;
+  margin-top: 2px;
+  font-size: 0.68rem;
+  color: var(--a-muted);
+}
+
+.alt-quote::before {
+  position: absolute;
+  top: -6px;
+  right: 18px;
+  font-family: "Outfit", system-ui, sans-serif;
+  font-size: 6rem;
+  line-height: 1;
+  color: var(--a-orange);
+  content: "”";
+  opacity: 0;
+  transform: translateY(14px) scale(0.7);
+  transition: opacity 0.35s ease, transform 0.45s cubic-bezier(0.34, 1.56, 0.64, 1);
+  pointer-events: none;
+}
+
+.alt-avatar {
+  display: grid;
+  flex-shrink: 0;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: #fff;
+  background: var(--a-orange);
+  border-radius: 50%;
+  transition: transform 0.6s ease;
+}
+
+.alt-quote:hover {
+  background-color: #10132a;
+  box-shadow: inset 4px 0 0 var(--a-orange), 0 12px 28px rgba(0, 0, 0, 0.35);
+}
+
+.alt-quote:hover::before {
+  opacity: 0.9;
+  transform: translateY(0) scale(1);
+}
+
+.alt-quote:hover .alt-avatar {
+  transform: rotate(360deg) scale(1.1);
+}
+
+/* =====================================================
+   Animations d'entrée (chaque bloc a la sienne)
+   ===================================================== */
+@keyframes alt-rise {
+  from {
+    opacity: 0;
+    translate: 0 32px;
+  }
+  to {
+    opacity: 1;
+    translate: 0 0;
+  }
+}
+
+@keyframes alt-float {
+  0%,
+  100% {
+    translate: 0 0;
+  }
+  50% {
+    translate: 0 -10px;
+  }
+}
+
+@keyframes alt-focus {
+  from {
+    opacity: 0;
+    filter: blur(10px);
+  }
+  to {
+    opacity: 1;
+    filter: blur(0);
+  }
+}
+
+@keyframes alt-drop {
+  from {
+    opacity: 0;
+    translate: 0 -36px;
+  }
+  to {
+    opacity: 1;
+    translate: 0 0;
+  }
+}
+
+@keyframes alt-wipe {
+  from {
+    clip-path: inset(0 100% 0 0);
+  }
+  to {
+    clip-path: inset(0 0 0 0);
+  }
+}
+
+@keyframes alt-swing {
+  from {
+    opacity: 0;
+    rotate: 3deg;
+    translate: 40px 0;
+  }
+  to {
+    opacity: 1;
+    rotate: 0deg;
+    translate: 0 0;
+  }
+}
+
+@keyframes alt-glow {
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 rgba(232, 118, 31, 0.5);
+  }
+  50% {
+    box-shadow: 0 0 0 10px rgba(232, 118, 31, 0);
+  }
+}
+
+/* Hero : texte qui monte, image qui flotte, bouton qui pulse */
+.alt-hero h1 {
+  animation: alt-rise 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.alt-hero .alt-lead {
+  animation: alt-rise 0.7s 0.15s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.alt-hero .btn-alt {
+  animation: alt-rise 0.7s 0.3s cubic-bezier(0.22, 1, 0.36, 1) both, alt-glow 2.4s 1.2s ease-in-out infinite;
+}
+
+.alt-hero-img {
+  animation: alt-float 6s ease-in-out infinite;
+}
+
+/* Au défilement */
+@supports (animation-timeline: view()) {
+  .alt-step {
+    animation: alt-focus linear both;
+    animation-timeline: view();
+    animation-range: entry 0% entry 50%;
+  }
+
+  .alt-day {
+    animation: alt-drop linear both;
+    animation-timeline: view();
+  }
+  .alt-day:nth-child(1) { animation-range: entry 0% entry 35%; }
+  .alt-day:nth-child(2) { animation-range: entry 8% entry 43%; }
+  .alt-day:nth-child(3) { animation-range: entry 16% entry 51%; }
+  .alt-day:nth-child(4) { animation-range: entry 24% entry 59%; }
+  .alt-day:nth-child(5) { animation-range: entry 32% entry 67%; }
+
+  .alt-perk {
+    animation: alt-wipe linear both;
+    animation-timeline: view();
+    animation-range: entry 0% entry 55%;
+  }
+
+  .alt-quote {
+    animation: alt-swing linear both;
+    animation-timeline: view();
+    animation-range: entry 0% entry 50%;
+  }
+}
+
+/* Accessibilité */
+@media (prefers-reduced-motion: reduce) {
+  .alt *,
+  .alt *::before,
+  .alt *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+@media (max-width: 767.98px) {
+  .alt-section {
+    padding: 56px 0;
+  }
+  .alt-heading {
+    margin-bottom: 32px;
+  }
+  .alt-days {
+    flex-direction: column;
+  }
+  .alt-day:hover {
+    flex-grow: 1;
+  }
+  .btn-alt {
+    width: 100%;
+  }
+}
