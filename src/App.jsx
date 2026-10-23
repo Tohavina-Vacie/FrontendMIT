@@ -36,6 +36,12 @@ import SectionVide from "./Pages/etudiant/SectionVide";
 import SuperAccueil from "./Pages/superadmin/SuperAccueil";
 import AdministrateursSuper from "./Pages/superadmin/AdministrateursSuper";
 import Roles from "./Pages/superadmin/Roles";
+import MaintenanceSuper from "./Pages/superadmin/MaintenanceSuper";
+import ApiSuper from "./Pages/superadmin/ApiSuper";
+import BaseDonneesSuper from "./Pages/superadmin/BaseDonneesSuper";
+import SecuriteSuper from "./Pages/superadmin/SecuriteSuper";
+import LogsSuper from "./Pages/superadmin/LogsSuper";
+import ConfigurationSuper from "./Pages/superadmin/ConfigurationSuper";
 import MesCours from "./Pages/etudiant/MesCours";
 import MonEmploiDuTemps from "./Pages/etudiant/MonEmploiDuTemps";
 import MesNotes from "./Pages/etudiant/MesNotes";
@@ -119,12 +125,12 @@ export default function App() {
           <Route path="administrateurs" element={<AdministrateursSuper />} />
           <Route path="roles" element={<Roles />} />
           <Route path="etablissements" element={<SectionVide icone="briefcase" titre="Établissements" description="Gestion des établissements." message="Cette section sera disponible dès que ses routes super admin seront reliées." />} />
-          <Route path="configuration" element={<SectionVide icone="settings" titre="Configuration système" description="Options globales de la plateforme." message="Cette section sera disponible dès que ses routes super admin seront reliées." />} />
-          <Route path="logs" element={<SectionVide icone="clipboard" titre="Logs" description="Journal des actions et des connexions." message="Cette section sera disponible dès que ses routes super admin seront reliées." />} />
-          <Route path="securite" element={<SectionVide icone="shield" titre="Sécurité globale" description="Sessions actives et tentatives de connexion." message="Cette section sera disponible dès que ses routes super admin seront reliées." />} />
-          <Route path="base-de-donnees" element={<SectionVide icone="database" titre="Base de données" description="État et sauvegardes de la base." message="Cette section sera disponible dès que ses routes super admin seront reliées." />} />
-          <Route path="api" element={<SectionVide icone="code" titre="API" description="Clés d'accès et suivi des requêtes." message="Cette section sera disponible dès que ses routes super admin seront reliées." />} />
-          <Route path="maintenance" element={<SectionVide icone="tool" titre="Maintenance" description="Mode maintenance et opérations système." message="Cette section sera disponible dès que ses routes super admin seront reliées." />} />
+          <Route path="configuration" element={<ConfigurationSuper />} />
+          <Route path="logs" element={<LogsSuper />} />
+          <Route path="securite" element={<SecuriteSuper />} />
+          <Route path="base-de-donnees" element={<BaseDonneesSuper />} />
+          <Route path="api" element={<ApiSuper />} />
+          <Route path="maintenance" element={<MaintenanceSuper />} />
           <Route path="parametres" element={<SectionVide icone="sliders" titre="Paramètres avancés" description="Réglages techniques de la plateforme." message="Cette section sera disponible dès que ses routes super admin seront reliées." />} />
         </Route>
 

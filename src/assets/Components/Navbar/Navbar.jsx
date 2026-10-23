@@ -51,7 +51,7 @@ export default function Navbar() {
           </ul>
 
           <div className="d-flex flex-column flex-lg-row gap-2 my-3 my-lg-0">
-            <a href="mailto:contact@mit.mg" className="btn btn-nav btn-nav-dark" onClick={close}>
+            <a href="/contact" className="btn btn-nav btn-nav-dark" onClick={close}>
               Nous contacter
             </a>
             <a href="#" className="btn btn-nav btn-nav-mid" onClick={close}>

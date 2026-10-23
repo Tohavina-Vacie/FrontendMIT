@@ -51,3 +51,37 @@ export const libelleSemaine = (lundi) => {
   const fin = plusJours(lundi, 4);
   return `Semaine du ${lundi.getDate()} au ${fin.getDate()} ${fin.toLocaleDateString("fr-FR", { month: "long", year: "numeric" })}`;
 };
+
+// ===== Super admin =====
+export const depuis = (d) => {
+  if (!d) return "Jamais";
+  const s = (Date.now() - new Date(d).getTime()) / 1000;
+  if (s < 60) return "À l'instant";
+  if (s < 3600) return `Il y a ${Math.floor(s / 60)} min`;
+  if (s < 86400) return `Il y a ${Math.floor(s / 3600)} h`;
+  if (s < 172800) return "Hier";
+  return dateFr(d);
+};
+
+export const dureeUptime = (sec = 0) => {
+  const j = Math.floor(sec / 86400);
+  const h = Math.floor((sec % 86400) / 3600);
+  const m = Math.floor((sec % 3600) / 60);
+  return j ? `${j} j ${h} h` : h ? `${h} h ${m} min` : `${m} min`;
+};
+
+export const appareil = (ua = "") => {
+  const nav = /Edg\//.test(ua) ? "Edge" : /OPR\//.test(ua) ? "Opera" : /Firefox\//.test(ua) ? "Firefox" : /Chrome\//.test(ua) ? "Chrome" : /Safari\//.test(ua) ? "Safari" : "Navigateur";
+  const os = /Windows/.test(ua) ? "Windows" : /Android/.test(ua) ? "Android" : /iPhone|iPad/.test(ua) ? "iOS" : /Mac OS X/.test(ua) ? "macOS" : /Linux/.test(ua) ? "Linux" : "Autre";
+  return `${nav} / ${os}`;
+};
+
+// Identifiant de la session en cours, lu dans le jeton de connexion
+export const sidCourant = () => {
+  try {
+    const charge = localStorage.getItem("token").split(".")[1].replace(/-/g, "+").replace(/_/g, "/");
+    return JSON.parse(atob(charge)).sid;
+  } catch {
+    return null;
+  }
+};
